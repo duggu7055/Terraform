@@ -79,36 +79,46 @@ This shared library streamlines Terraform workflows in Jenkins, enabling efficie
 @Library('terraform-shared-library') _
 
 def terraformUtils = new org.example.terraformUtils()
-
-def configDir = 'path/to/terraform/config'
-def varsFile = 'path/to/terraform/vars.tfvars'
-
-def action = 'apply'  // Available actions: init, validate, plan, apply, destroy
+def environmentHelper = terraformEnvironment
 
 pipeline {
     agent any
+    parameters {
+        string(name: 'ACTION', defaultValue: 'plan', description: 'Terraform action (init, validate, plan, apply, destroy)')
+        string(name: 'VARS_FILE', defaultValue: '', description: 'Path to .tfvars file (optional)')
+    }
     stages {
+        stage('Setup') {
+            steps {
+                script {
+                    // Get config directory for dev environment
+                    env.CONFIG_DIR = environmentHelper('dev')
+                }
+            }
+        }
         stage('Terraform Execution') {
             steps {
                 script {
-                    if (action == 'init') {
+                    def configDir = "${env.WORKSPACE}/${env.CONFIG_DIR}"
+                    if (params.ACTION == 'init') {
                         terraformUtils.init(configDir)
-                    } else if (action == 'validate') {
+                    } else if (params.ACTION == 'validate') {
                         terraformUtils.validate(configDir)
-                    } else if (action == 'plan') {
-                        terraformUtils.plan(configDir, varsFile)
-                    } else if (action == 'apply') {
-                        terraformUtils.apply(configDir, varsFile, true)
-                    } else if (action == 'destroy') {
-                        terraformUtils.destroy(configDir, varsFile, true)
+                    } else if (params.ACTION == 'plan') {
+                        terraformUtils.plan(configDir, params.VARS_FILE ?: null)
+                    } else if (params.ACTION == 'apply') {
+                        terraformUtils.apply(configDir, params.VARS_FILE ?: null, true)
+                    } else if (params.ACTION == 'destroy') {
+                        terraformUtils.destroy(configDir, params.VARS_FILE ?: null, true)
                     } else {
-                        error("Invalid action: ${action}")
+                        error "Invalid action: ${params.ACTION}"
                     }
                 }
             }
         }
     }
 }
+
 
 ```
 
