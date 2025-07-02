@@ -17,6 +17,7 @@
 * [Advantages and Disadvantages](#advantages-and-disadvantages)
 * [Real-World Examples](#real-world-examples)
 * [Conclusion](#conclusion)
+* [References](#references)
 
 ---
 
@@ -98,4 +99,18 @@ Mutable Infrastructure offers flexibility and speed, making it suitable for envi
 | **Name**           | **Email Address**                              |
 |---------------------|-----------------------------------------------|
 | Durgesh Sharma      | durgesh.sharma.snaatak@mygurukulam.co         |
+
+---
+---
+
+## References
+
+| Title                                                              | Link                                                                                      |
+|--------------------------------------------------------------------|-------------------------------------------------------------------------------------------|
+| Mutable Infrastructure vs Immutable Infrastructure - Atlassian     | [Visit](https://www.atlassian.com/microservices/microservices-architecture/mutable-vs-immutable-infrastructure) |
+| Infrastructure as Code - HashiCorp                                 | [Visit](https://developer.hashicorp.com/terraform/tutorials)                             |
+| Mutable Infrastructure - GeeksforGeeks                             | [Visit](https://www.geeksforgeeks.org/mutable-infrastructure/)                           |
+| AWS Documentation: Managing Infrastructure                         | [Visit](https://docs.aws.amazon.com/)                                                    |
+| RedHat on Mutable Infrastructure                                   | [Visit](https://www.redhat.com/en/blog/mutable-vs-immutable-infrastructure-and-why-it-matters) |
+
 
