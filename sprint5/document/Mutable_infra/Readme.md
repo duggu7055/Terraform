@@ -1,4 +1,9 @@
 # Mutable Infrastructure
+
+<div align="center">
+    <img width="600" height="300" alt="Terraform" src="https://dynamic.design.com/asset/logo/362ab915-135d-472e-8600-943a9dc05316/logo-search-grid-1x?logoTemplateVersion=4&v=638725088963400000&text=Mutable+infrasture&layout=auto">
+</div>
+
 ## Author Information
 
 | **Last Modified** | **Version** | **Author**        | **Level**            | **Reviewer**         |
